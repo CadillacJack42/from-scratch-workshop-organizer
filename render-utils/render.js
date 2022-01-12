@@ -1,4 +1,5 @@
 import { getWorkshops } from '../fetch-utils.js';
+import { deleteGenerator } from './listenerGen.js';
 
 const workshopsEl = document.getElementById('workshops');
 
@@ -20,16 +21,19 @@ export const renderWorkshops = (workshop) => {
 };
 
 export const renderParticipant = (student) => {
+    console.log(student);
     const studentContainer = document.createElement('div');
     const studentNameEl = document.createElement('p');
 
     studentNameEl.textContent = student.name;
     studentContainer.append(studentNameEl);
+    deleteGenerator(studentContainer, student.user_id);
 
     return studentContainer;
 };
 
 export const renderAll = async() => {
+    workshopsEl.textContent = '';
     const shops = await getWorkshops();
 
     for (const shop of shops) {

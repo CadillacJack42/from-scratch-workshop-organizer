@@ -57,10 +57,10 @@ export const createParticipant = async(participant) => {
     return checkError(response);
 };
 
-export const deleteParticipant = async(id) => {
+export const deleteParticipant = async(user_id) => {
     const response = await client
         .from('students')
         .delete()
-        .match({ id });
+        .match({ user_id });
     return checkError(response);
 };
