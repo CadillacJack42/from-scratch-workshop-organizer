@@ -3,8 +3,11 @@
 // include jsdom for DOM use in tests on travis
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-const { window } = new JSDOM(``, {
-    url: 'http://localhost:5500'
+const { window } = new JSDOM(`<!DOCTYPE html><head><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head><body><div>Foo</div></body>`, {
+    url: 'http://localhost:5500',
+    runScripts: "dangerously", 
+    resources: "usable"
 });
 global.window = window;
 global.document = window.document;
