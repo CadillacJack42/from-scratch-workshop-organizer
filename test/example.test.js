@@ -1,6 +1,9 @@
 // IMPORT MODULES under test here:
-// import { example } from '../example.js';
 
+import { renderParticipant } from '../render-utils/render.js';
+
+// import { example } from '../example.js';
+renderParticipant
 const test = QUnit.test;
 
 test('time to test a function', (expect) => {
@@ -15,4 +18,16 @@ test('time to test a function', (expect) => {
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
+});
+
+test('Should return a dom element containing a div and a p with textcontent', (expect) => {
+    const expected = '<div><p>Jack</p></div>';
+
+    const student = {
+        name: 'Jack'
+    };
+
+    const actual = renderParticipant(student);
+
+    expect.equal(actual.outerHTML, expected);
 });

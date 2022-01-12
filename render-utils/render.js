@@ -21,7 +21,6 @@ export const renderWorkshops = (workshop) => {
 };
 
 export const renderParticipant = (student) => {
-    console.log(student);
     const studentContainer = document.createElement('div');
     const studentNameEl = document.createElement('p');
 
