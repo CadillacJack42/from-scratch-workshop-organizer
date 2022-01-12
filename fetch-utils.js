@@ -7,7 +7,6 @@ export async function getUser() {
     return client.auth.session();
 }
 
-
 export async function checkAuth() {
     const user = await getUser();
 
@@ -41,3 +40,12 @@ export async function logout() {
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
+
+export const getWorkshops = async() => {
+    const response = await client
+        .from('workshops')
+        .select('*, students (*)');
+    console.log(response);
+    return checkError(response);
+};
+getWorkshops();
