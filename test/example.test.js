@@ -3,7 +3,7 @@
 import { renderParticipant } from '../render-utils/render.js';
 
 // import { example } from '../example.js';
-renderParticipant
+
 const test = QUnit.test;
 
 test('time to test a function', (expect) => {
