@@ -10,12 +10,11 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
-const check = async() => {
+window.addEventListener('load', async() => {
     const shops = await getWorkshops();
 
     for (const shop of shops) {
         const renderedShop = renderWorkshops(shop);
         workshopsEl.append(renderedShop);
     }
-};
-check();
+});
