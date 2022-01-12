@@ -45,7 +45,7 @@ export const getWorkshops = async() => {
     const response = await client
         .from('workshops')
         .select('*, students (*)');
-    console.log(response);
+        console.log(response);
     return checkError(response);
 };
 getWorkshops();
