@@ -45,7 +45,14 @@ export const getWorkshops = async() => {
     const response = await client
         .from('workshops')
         .select('*, students (*)');
-        console.log(response);
     return checkError(response);
 };
-getWorkshops();
+
+export const createParticipant = async(participant) => {
+    const response = await client
+        .from('students')
+        .insert([{
+            ...participant
+        }]);
+    return checkError(response);
+};
