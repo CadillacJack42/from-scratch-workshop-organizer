@@ -1,3 +1,7 @@
+import { getWorkshops } from '../fetch-utils.js';
+
+const workshopsEl = document.getElementById('workshops');
+
 export const renderWorkshops = (workshop) => {
     const workShopContainer = document.createElement('div');
     const workShopNameEl = document.createElement('h3');
@@ -23,4 +27,13 @@ export const renderParticipant = (student) => {
     studentContainer.append(studentNameEl);
 
     return studentContainer;
+};
+
+export const renderAll = async() => {
+    const shops = await getWorkshops();
+
+    for (const shop of shops) {
+        const renderedShop = renderWorkshops(shop);
+        workshopsEl.append(renderedShop);
+    }
 };

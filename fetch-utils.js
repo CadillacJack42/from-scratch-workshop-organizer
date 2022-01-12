@@ -56,3 +56,11 @@ export const createParticipant = async(participant) => {
         }]);
     return checkError(response);
 };
+
+export const deleteParticipant = async(id) => {
+    const response = await client
+        .from('students')
+        .delete()
+        .match({ id });
+    return checkError(response);
+};
