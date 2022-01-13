@@ -40,10 +40,10 @@ export const renderWorkshops = (workshop) => {
 export const renderParticipant = (student) => {
     const studentContainer = document.createElement('div');
 
-    studentContainer.addEventListener('click', (e) => {
+    studentContainer.addEventListener('click', async(e) => {
         e.preventDefault();
-        deleteParticipant(student.user_id);
-        renderAll();
+        await deleteParticipant(student.user_id);
+        await renderAll();
     });
 
     const studentNameEl = document.createElement('p');
