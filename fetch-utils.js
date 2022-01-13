@@ -64,3 +64,28 @@ export const deleteParticipant = async(user_id) => {
         .match({ user_id });
     return checkError(response);
 };
+
+export const updateStudentEnrollment = async(id, workShopId) => {
+    const response = await client
+        .from('students')
+        .update({ workshop_id : workShopId })
+        .match({ id })
+        .single();
+
+    checkError(response);
+};
+
+export const allowDrop = (e) => {
+    e.preventDefault();
+};
+
+export const drag = (e, id) => {
+    e.dataTransfer.setData('text', id);
+};
+
+export const drop = (e) => {
+    e.preventDefault();
+    let data = e.dataTransfer.getData('text');
+
+    return data;
+};
