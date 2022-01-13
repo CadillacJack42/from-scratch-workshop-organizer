@@ -1,4 +1,4 @@
-import { updateStudentEnrollment, getWorkshops, allowDrop, drop, drag } from '../fetch-utils.js';
+import { updateStudentEnrollment, getWorkshops, allowDrop, drop, drag, deleteParticipant } from '../fetch-utils.js';
 
 const workshopsEl = document.getElementById('workshops');
 
@@ -39,6 +39,13 @@ export const renderWorkshops = (workshop) => {
 
 export const renderParticipant = (student) => {
     const studentContainer = document.createElement('div');
+
+    studentContainer.addEventListener('click', async(e) => {
+        e.preventDefault();
+        await deleteParticipant(student.user_id);
+        await renderAll();
+    });
+
     const studentNameEl = document.createElement('p');
 
     studentNameEl.textContent = student.name;
